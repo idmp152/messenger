@@ -1,0 +1,5 @@
+fastapi==0.74.1
+sqlalchemy~=1.4.29
+uvicorn==0.17.5
+aiosqlite~=0.17.0
+pyjwt~=2.3.0
