@@ -3,7 +3,7 @@ import asyncio
 
 from fastapi import FastAPI, APIRouter
 from sqlalchemy.ext.asyncio import AsyncEngine
-from typing import Iterable
+from typing import Iterable, NoReturn
 
 from messenger.core.models import Base
 from messenger.core import db_engine
@@ -15,7 +15,7 @@ app: FastAPI = FastAPI()
 routers: Iterable[APIRouter] = (user_router, ws_router)
 
 
-async def start_db_engine_async(engine: AsyncEngine, schema) -> None:
+async def start_db_engine_async(engine: AsyncEngine, schema) -> NoReturn:
     async with engine.begin() as conn:
         await conn.run_sync(schema.metadata.create_all)
 
